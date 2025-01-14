@@ -3,6 +3,7 @@ import { calm, greaterBoostStrength, greaterCalm, leastBostIngredient, leastCalm
 import Ingredients from "../potions/ingredients";
 import Curses from "../potions/curses";
 import { describe, expect, test } from "@jest/globals";
+import { restoreIngredient1, restoreIngredient2 } from "./__mocks__/antidoteIngredients";
 
 describe('Cuando el número de ingredientes es de 2-4', () => {
 
@@ -529,5 +530,26 @@ describe('Cuando el número de ingredientes es de 2-4', () => {
                 });
             });
         });
+    });
+
+    describe('Cuando alguno de los efectos de ingredientes no lleva Calm o Boost', () => {
+        it('No podremos crear el Elixir', () => {
+            // Arrange
+            const fakeIngredients = require("./__mocks__/fake-ingredients.json");
+            const fakeCurses = require("./__mocks__/fake-curses.json");
+
+            const ingredients = Ingredients.load(fakeIngredients).ingredients;
+            const curses = Curses.load(fakeCurses).curses;
+
+            const ingredientsArray = [lesserCalm, restoreIngredient1, greaterBoostStrength, restoreIngredient2];
+
+            const cauldron = new Cauldron(ingredients, curses);
+
+            // Act
+            const potion = cauldron.createPotion(ingredientsArray);
+
+            // Assert
+            expect(potion.name).not.toContain('Elixir');
+        })
     });
 });
