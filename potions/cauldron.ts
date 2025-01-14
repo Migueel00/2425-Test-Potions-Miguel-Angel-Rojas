@@ -1,9 +1,9 @@
-import Ingredient from "./ingredient.tsx";
-import Potion,{Antidote, Poison, Elixir, Venom, Essence, Stench, FailedPotion, PurificationPotion } from "./potion.tsx";
-import { essence_ingredients_number, essence_ingridient_multipliers } from "./constants.tsx";
-import { Effect } from "./potionsInterface.tsx";
-import Curse from "./curse.tsx";
-import { Modifiers } from "./curse.tsx";
+import Ingredient from "./ingredient.ts";
+import Potion,{Antidote, Poison, Elixir, Venom, Essence, Stench, FailedPotion, PurificationPotion } from "./potion.ts";
+import { essence_ingredients_number, essence_ingridient_multipliers } from "./constants.ts";
+import { Effect } from "./potionsInterface.ts";
+import Curse from "./curse.ts";
+import { Modifiers } from "./curse.ts";
 
 export default class Cauldron {
     ingredients: Ingredient[];
@@ -115,7 +115,7 @@ export default class Cauldron {
         
         if(potionToCreate != null)
         {
-            const name = potionToCreate.name
+            const name = potionToCreate?.name!;
             let modifiers: Modifiers = potionToCreate?.modifiers!;
             const id = potionToCreate?._id!;
             const description = potionToCreate?.description!;

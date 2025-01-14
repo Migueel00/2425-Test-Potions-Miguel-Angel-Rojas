@@ -1,7 +1,8 @@
-import Ingredients from "./ingredients.tsx";
+import Ingredients from "./ingredients.ts";
 import Cauldron from "./cauldron.ts";
-import PotionBag from "./PotionBag.tsx";
-import Potion from "./potion.tsx";
+import { log } from "console";
+import PotionBag from "./PotionBag.ts";
+import Potion from "./potion.ts";
 import Curses from "./curses.ts";
 
 const executePotionCreation = async() => {
