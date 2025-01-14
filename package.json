@@ -1,0 +1,11 @@
+{
+  "name": "testing-potions",
+  "version": "1.0.0",
+  "description": "Testing Chanllenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Migueel00",
+  "license": "ISC"
+}
