@@ -552,4 +552,44 @@ describe('Cuando el número de ingredientes es de 2-4', () => {
             expect(potion.name).not.toContain('Elixir');
         })
     });
+
+    describe('Cuando el numero de ingredientes es menor a 2 y mayor a 4', () => {
+        it('No podremos crear el elixir cuando tengamos menos de 2 ingredientes ', () => {
+                // Arrange
+                const fakeIngredients = require("./__mocks__/fake-ingredients.json");
+                const fakeCurses = require("./__mocks__/fake-curses.json");
+    
+                const ingredients = Ingredients.load(fakeIngredients).ingredients;
+                const curses = Curses.load(fakeCurses).curses;
+    
+                const ingredientsArray = [lesserCalm];
+    
+                const cauldron = new Cauldron(ingredients, curses);
+    
+                // Act
+                const potion = cauldron.createPotion(ingredientsArray);
+    
+                // Assert
+                expect(potion.name).not.toContain('Elixir');
+        });
+
+        it('No podremos crear el elixir cuando tengamos menos de 2 ingredientes ', () => {
+            // Arrange
+            const fakeIngredients = require("./__mocks__/fake-ingredients.json");
+            const fakeCurses = require("./__mocks__/fake-curses.json");
+
+            const ingredients = Ingredients.load(fakeIngredients).ingredients;
+            const curses = Curses.load(fakeCurses).curses;
+
+            const ingredientsArray = [lesserCalm, lesserCalm, calm, greaterCalm, leastCalm1];
+
+            const cauldron = new Cauldron(ingredients, curses);
+
+            // Act
+            const potion = cauldron.createPotion(ingredientsArray);
+
+            // Assert
+            expect(potion.name).not.toContain('Elixir');
+        });
+    });
 });
