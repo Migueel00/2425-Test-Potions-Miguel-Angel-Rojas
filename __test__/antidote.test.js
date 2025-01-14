@@ -25,7 +25,6 @@ describe("Cuando todos los ingredientes llevan el efecto Restore", () => {
 
             // Act
             const potion = cauldron.createPotion(ingredientsArray);
-            console.log(potion);
 
             // Assert
             expect(potion.name).toBe("Antidote of Frostbane Fever");
@@ -47,7 +46,6 @@ describe("Cuando todos los ingredientes llevan el efecto Restore", () => {
             const potion = cauldron.createPotion(ingredientsArray);
 
             // Assert
-            console.log(potion.modifiers);
             expect(potion.modifiers.constitution).toBeGreaterThan(9);
             expect(potion.modifiers.constitution).toBeLessThan(14);
 
